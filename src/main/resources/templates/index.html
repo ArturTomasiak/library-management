@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+    <title>Library - Home</title>
+</head>
+<body>
+<header>
+    <h1>Library</h1>
+    <div>
+        <a sec:authorize="!isAuthenticated()" href="/auth/login">Login</a>
+        <a sec:authorize="!isAuthenticated()" href="/auth/signup">Sign Up</a>
+        <a sec:authorize="isAuthenticated()" href="/profile">Profile</a>
+        <a sec:authorize="isAuthenticated()" href="/logout">Logout</a>
+    </div>
+</header>
+<main>
+    <div>
+        <label for="sort">Sort By:</label>
+        <select id="sort">
+            <option value="">All Books</option>
+            <option value="popularity">Popularity</option>
+        </select>
+    </div>
+    <div class="book-list"></div>
+</main>
+<footer>
+    <p>© 2025 Library System</p>
+</footer>
+<script src="/js/index.js"></script>
+</body>
+</html>

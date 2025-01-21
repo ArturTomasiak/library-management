@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/css/profile.css}" />
+  <title>Profile</title>
+</head>
+<body>
+<header class="header">
+  <div class="header-container">
+    <h1>User Profile</h1>
+    <a href="/" class="header-link">Home</a>
+  </div>
+</header>
+
+<main class="profile-container">
+  <section class="profile-details">
+    <h2>Account Information</h2>
+    <div class="profile-info">
+      <p><strong>First Name:</strong> <span th:text="${user.profile.firstName}">First Name</span></p>
+      <p><strong>Last Name:</strong> <span th:text="${user.profile.lastName}">Last Name</span></p>
+      <p><strong>Email:</strong> <span th:text="${user.email}">Email</span></p>
+      <p><strong>Phone Number:</strong> <span th:text="${user.profile.phoneNumber != null ? user.profile.phoneNumber : 'Not provided'}">Phone Number</span></p>
+    </div>
+  </section>
+
+  <section class="loan-history">
+    <h2>Loan History</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Book Title</th>
+        <th>Loan Date</th>
+        <th>Return Date</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="loan : ${loans}">
+        <td th:text="${loan.book.title}"></td>
+        <td th:text="${loan.loanDate}"></td>
+        <td th:text="${loan.returnDate != null ? loan.returnDate : 'Not Returned'}"></td>
+        <td>
+          <button th:if="${loan.returnDate == null}" th:onclick="'returnBook(' + ${loan.loanId} + ')'">Return Book</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 Library System</p>
+</footer>
+
+<script src="/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="stylesheet" th:href="@{/css/book.css}" />
+    <title th:text="${book.title}">Book Details</title>
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <h1 class="book-title" th:text="${book.title}">Book Title</h1>
+        <nav class="header-nav">
+            <a href="/" class="header-link">Home</a>
+            <a sec:authorize="!isAuthenticated()" href="/auth/login" class="header-link">Login</a>
+            <a sec:authorize="!isAuthenticated()" href="/auth/signup" class="header-link">Sign Up</a>
+            <a sec:authorize="isAuthenticated()" href="/profile" class="header-link">Profile</a>
+            <a sec:authorize="isAuthenticated()" href="/logout" class="header-link">Logout</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="book-details">
+        <img th:src="${book.coverArt}" alt="Book Cover" class="book-cover" />
+        <h2 th:text="${book.author}">Author</h2>
+        <p><strong>Published Year:</strong> <span th:text="${book.publishedYear}"></span></p>
+        <p><strong>Genre:</strong>
+            <span th:each="category : ${book.categories}" th:text="${category.name}">Genre</span>
+        </p>
+        <p><strong>Description:</strong></p>
+        <p th:text="${book.description}"></p>
+        <button th:if="!${alreadyLent}" th:onclick="'lendBook(' + ${book.bookId} + ')'" sec:authorize="isAuthenticated()">Lend for Two Weeks</button>
+        <p th:if="${alreadyLent}" sec:authorize="isAuthenticated()">You have already borrowed this book.</p>
+        <p sec:authorize="!isAuthenticated()">Please log in to lend books.</p>
+    </div>
+</main>
+<footer>
+    <p>© 2025 Library System</p>
+</footer>
+<script src="/js/book.js"></script>
+</body>
+</html>
