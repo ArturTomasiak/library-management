@@ -1,6 +1,6 @@
 # Library Management System
 
-A simple application for managing a library, built using Java and PostgreSQL.
+ <tr> <td><img src="https://github.com/user-attachments/assets/064d53e1-993a-4a7f-8cdd-eeb8496f23be" height="150"></td> <td><img src="https://github.com/user-attachments/assets/63af188d-eaae-4fd0-ac65-ddcf8c88ef32" height="150"></td> <td><img src="https://github.com/user-attachments/assets/2fe76b79-be83-4fb3-a143-db0ee8ed4608" height="150"></td> </tr> </table>
 
 ## Table of Contents
 - [Overview](#overview)
@@ -10,7 +10,7 @@ A simple application for managing a library, built using Java and PostgreSQL.
   - [IntelliJ](#intellij)
 
 ## Overview
-This project provides a web-based library management system where users can explore books and their categories. The backend is powered by Java, while PostgreSQL serves as the database.
+This project provides a web-based library management system where users can lend and return books with a main page where one can discover books by their categories. The backend is powered by Java Spring Maven, while PostgreSQL serves as the database.
 
 ## Prerequisites
 Before running the project, ensure you have the following installed:
